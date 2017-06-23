@@ -41,7 +41,7 @@ class ApiController extends Controller{
     /**
      * @Route("bar", name="api_bar")
      */
-    public function barAction(SerializerInterface $serializer)
+    public function barAction()
     {
         $users = $this->getDoctrine()
             ->getRepository('AppBundle:User')
