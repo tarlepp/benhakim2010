@@ -35,7 +35,7 @@ class ApiController extends Controller{
 
         $json = $serializer->serialize($users,'json');
 
-        return new JsonResponse(['users' => json_decode($json)]);
+        return new JsonResponse(['users_foo' => json_decode($json)]);
     }
 
     /**
@@ -49,8 +49,6 @@ class ApiController extends Controller{
 
         $normalizer = new ObjectNormalizer();
 
-        $users = \array_map([$normalizer, 'normalize'], $users);
-
-        return new JsonResponse(['users' => $users]);
+        return new JsonResponse(['users_bar' => \array_map([$normalizer, 'normalize'], $users)]);
     }
 }
