@@ -49,11 +49,7 @@ class ApiController extends Controller{
 
         $normalizer = new ObjectNormalizer();
 
-        $iterator = function (User $user) use ($normalizer) {
-            return $normalizer->normalize($user);
-        };
-
-        $users = \array_map($iterator, $users);
+        $users = \array_map([$normalizer, 'normalize'], $users);
 
         return new JsonResponse(['users' => $users]);
     }
